@@ -1,0 +1,87 @@
+{
+  "name": "axios-stream-auth-refresh",
+  "version": "1.0.0",
+  "description": "Parallel refresh token handler using RxJS and Axios",
+  "author": "Pourya Alipanah <pourya.alipanah2@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "rxjs",
+    "axios",
+    "refresh-token",
+    "parallel",
+    "token-refresh",
+    "authentication",
+    "interceptor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pourya-Alipanah/axios-stream-auth-refresh.git"
+  },
+  "homepage": "https://github.com/Pourya-Alipanah/axios-stream-auth-refresh#readme",
+  "bugs": {
+    "url": "https://github.com/Pourya-Alipanah/axios-stream-auth-refresh/issues"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm run test:run && npm run build"
+  },
+  "peerDependencies": {
+    "axios": "^1.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.3",
+    "@typescript-eslint/eslint-plugin": "^8.50.1",
+    "@typescript-eslint/parser": "^8.50.1",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
+    "axios": "^1.7.9",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "rxjs": "^7.8.1",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vitest": "^4.0.16"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
