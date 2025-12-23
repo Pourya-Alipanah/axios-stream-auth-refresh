@@ -1,6 +1,6 @@
 {
   "name": "axios-stream-auth-refresh",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parallel refresh token handler using RxJS and Axios",
   "author": "Pourya Alipanah <pourya.alipanah2@gmail.com>",
   "license": "MIT",
@@ -79,6 +79,7 @@
     "rxjs": "^7.8.1",
     "typescript": "^5.7.0",
     "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.16"
   },
   "engines": {
