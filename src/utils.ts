@@ -4,7 +4,7 @@ import type {
   AxiosError,
   AxiosInstance,
   AxiosRequestConfig,
-  InternalAxiosRequestConfig,
+  AxiosResponse,
 } from 'axios'
 import type {
   AxiosStreamRefreshCache,
@@ -51,7 +51,7 @@ export function shouldInterceptError(
   // Copy config to response if there's a network error, so config can be modified and used in the retry
   if (!error.response) {
     error.response = {
-      config: error.config as InternalAxiosRequestConfig,
+      config: error.config,
       data: undefined,
       status: 0,
       statusText: '',
@@ -67,7 +67,7 @@ export function enqueueRequestAfterRefresh<T = unknown>(
   refreshAuthCall: (originalConfig: AxiosRequestConfig) => Promise<boolean>,
   originalConfig: AxiosRequestConfig,
   cache: AxiosStreamRefreshCache
-): Observable<T> {
+): Observable<AxiosResponse<T, unknown, {}>> {
   if (!cache.isRefreshing) {
     cache.isRefreshing = true
     cache.refreshTokenSubject.next(null)
@@ -88,9 +88,7 @@ export function enqueueRequestAfterRefresh<T = unknown>(
     filter((token): token is boolean => token != null),
     take(1),
     switchMap(() => {
-      return from(
-        instance.request<T>(originalConfig).then((response) => response.data)
-      )
+      return from(instance.request<T>(originalConfig))
     })
   )
 }
