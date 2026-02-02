@@ -121,7 +121,7 @@ describe('enqueueRequestAfterRefresh', () => {
 
       result$.subscribe({
         next: (data) => {
-          expect(data).toBe('test-data')
+          expect(data.data).toBe('test-data')
           expect(mockInstance.request).toHaveBeenCalledWith(originalConfig)
           resolve()
         },
@@ -149,7 +149,7 @@ describe('enqueueRequestAfterRefresh', () => {
 
       result$.subscribe({
         next: (data) => {
-          expect(data).toBe('test-data')
+          expect(data?.data).toBe('test-data')
           resolve()
         },
       })
