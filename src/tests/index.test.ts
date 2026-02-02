@@ -70,7 +70,7 @@ describe('createStreamRefreshInterceptor', () => {
   })
 
   it('should handle 401 error and trigger refresh', async () => {
-    mockInstance.request = vi.fn().mockResolvedValue({ data: 'refreshed-data' })
+    mockInstance.request = vi.fn().mockResolvedValue('refreshed-data')
 
     createStreamRefreshInterceptor(mockInstance, mockRefreshAuthCall)
 
